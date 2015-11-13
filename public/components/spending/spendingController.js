@@ -18,13 +18,13 @@ mayneApp.controller('spendingController', ['$scope','$http', function($scope, $h
     }
 
 	$scope.$watch('spending', function(newValue, oldValue, scope) {
-		if (isNaN(newValue)){
+		if (isNaN(newValue) && newValue.length > 1){
 			$scope.spending = oldValue;
 		}	
 	});
 
 	$scope.$watch('numberSold', function(newValue, oldValue, scope) {
-		if (isNaN(newValue)){
+		if (isNaN(newValue) && newValue.length > 1){
 			$scope.numberSold = oldValue;
 		}	
 	});
