@@ -7,7 +7,7 @@
             <form name="spendingForm" ng-class="{'has-error': errorFound == true}">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" id="ad-spend" ng-model="adSpend" class="form-control" placeholder="Ad Spend($)" ng-keydown="calculatePrediction()" required />
+                        <input type="text" id="ad-spend" ng-model="adSpend" class="form-control" placeholder="Ad Spend($)" ng-keyup="calculatePrediction()" required />
                     </div>
                 </div>
 
