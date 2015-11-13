@@ -1,0 +1,51 @@
+<div ng-controller="spendingController">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Calibrate Prediction</h3>
+		</div>
+		<div class="panel-body">
+			<form name="spendingForm" ng-class="{'has-error': errorFound == true}">
+				<div class="col-md-6">
+					<div class="form-group">
+						<input id="spending" type="text" ng-model="spending" class="form-control" placeholder="Spending($)" required />
+						
+					</div>
+						
+				</div>
+				<div class="col-md-6">
+					<div class="form-group"><input type="text" ng-model="numberSold" class="form-control datepicker" placeholder="Sold" required /></div>
+				</div>
+
+				<div class="row-fluid">
+					<div class="col-md-12">
+						<div class="form-group">
+							<button class="btn btn-primary btn-block" ng-click="addSpending()">Add</button>
+						</div>	
+					</div>
+				</div>		
+			</form>
+		</div>
+	</div>
+
+    <div class="panel panel-default" ng-show="spendings.length > 0">
+      <div class="panel-heading">
+        <h3 class="panel-title">Existing Calibrations</h3>
+      </div>
+      <div class="panel-body">
+          <table class="table table-striped">
+              <thead>
+                <th>Spending</th>
+                <th>Sold</th>
+                <th></th>
+              </thead>
+              <tbody>
+                <tr ng-repeat="s in spendings">
+                    <td>{{s.spending}}</td>
+                    <td>{{s.sold}}</td>
+                    <td><a href="" ng-click="deleteSpending(s)"><i class="glyphicon glyphicon-remove"></i></a></td>
+                </tr>
+              </tbody>
+          </table>
+      </div>
+    </div>
+</div>

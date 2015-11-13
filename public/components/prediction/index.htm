@@ -1,0 +1,90 @@
+<div ng-controller="predictionController">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Enter Details</h3>
+        </div>
+        <div class="panel-body">
+            <form name="spendingForm" ng-class="{'has-error': errorFound == true}">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <input type="text" id="ad-spend" ng-model="adSpend" class="form-control" placeholder="Ad Spend($)" ng-keydown="calculatePrediction()" required />
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <datepicker date-format="yyyy-MM-dd">
+                            <input ng-required="true" type="text" ng-model="date" class="form-control" placeholder="Date" readonly required />
+                        </datepicker>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                        <div class="form-group"><input type="text" ng-model="prediction" class="form-control" placeholder="Prediction" readonly /></div>
+                </div>
+
+                <div class="row-fluid">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block" ng-click="addPrediction()">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default" ng-show="predictions.length > 0">
+        <div class="panel-heading">
+            <h3 class="panel-title">Existing Predictions</h3>
+        </div>
+        <div class="panel-body">
+            <table class="table table-striped">
+                <thead>
+                <th>Ad Spent</th>
+                <th>Date</th>
+                <th>Prediction</th>
+                <th></th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="p in predictions">
+                    <td>{{p.ad_spend}}</td>
+                    <td>{{p.prediction_date}}</td>
+                    <td>{{p.prediction}}</td>
+                    <td><a href="" ng-click="deletePrediction(p)"><i class="glyphicon glyphicon-remove"></i></a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Prediction by Date Range</h3>
+      </div>
+      <div class="panel-body">
+        <div class="col-md-4">
+            <div class="form-group">
+                <datepicker date-format="yyyy-MM-dd">
+                    <input ng-change="dateRangeChange()" ng-model="drStart" type="text" class="form-control" readonly placeholder="Start Date"/>
+                </datepicker>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <datepicker date-format="yyyy-MM-dd">
+                    <input ng-change="dateRangeChange()" ng-model="drEnd" type="text" class="form-control" readonly placeholder="End Date"/>
+                </datepicker>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <input ng-model="drPrediction" type="text" class="form-control" placeholder="Prediction" readonly/>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
