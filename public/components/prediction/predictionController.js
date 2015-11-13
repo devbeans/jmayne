@@ -60,7 +60,7 @@ mayneApp.controller('predictionController', ['$scope', '$http', function ($scope
     }
 
     $scope.$watch('adSpend', function(newValue, oldValue, scope) {
-        if (isNaN(newValue)){
+        if (isNaN(newValue) && newValue.length > 1){
             $scope.adSpend = oldValue;
         }
     });
